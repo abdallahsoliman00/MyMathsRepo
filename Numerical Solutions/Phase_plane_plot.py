@@ -41,7 +41,7 @@ plt.style.use('dark_background')
 fig, ax = plt.subplots()
 
 calculate_path([20,-10], time=12, color='#FFFFB3')
-calculate_path([5, 6], time=12)
+calculate_path([np.pi+0.0001, 0], time=10)
 
 for i in theta:
     for j in theta_dot:
@@ -52,5 +52,5 @@ for i in theta:
 plt.grid(True, linestyle='--', linewidth=0.5)
 plt.title("Phase Plane Trajectory of a Pendulum")
 plt.xlabel("Angle $\\theta$")
-plt.ylabel("Angular Velocity $\\ddot{\\theta}$")
+plt.ylabel("Angular Velocity $\\dot{\\theta}$")
 plt.show()
