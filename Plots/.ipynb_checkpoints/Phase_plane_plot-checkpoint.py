@@ -17,7 +17,7 @@ def calc_new_state(prev_state, delta_t=0.01):
     return new_state
 
 # Time in seconds
-def calculate_path(init_state, time=5, plot=True, color='#8DD3C7'):
+def calculate_path(init_state, time=5, plot=True, color='#FFFFFF'):
     state_array = np.array([init_state])
 
     old_state = np.array(init_state)
@@ -50,7 +50,7 @@ for i in theta:
         ax.quiver(i, j, state_direction[0], state_direction[1], color='blue', width=0.003, scale=2, headwidth=2)
 
 plt.grid(True, linestyle='--', linewidth=0.5)
-plt.title("Phase Plane Trajectory of a Pendulum")
+plt.title("Phase Plane Solution of a Pendulum")
 plt.xlabel("Angle $\\theta$")
 plt.ylabel("Angular Velocity $\\ddot{\\theta}$")
 plt.show()
