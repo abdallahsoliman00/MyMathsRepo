@@ -6,6 +6,9 @@ l = 2
 
 theta_0 = np.array([-8,1])
 
+theta = np.linspace(-10, 10, 20)
+theta_dot = np.linspace(-10, 10, 20)
+
 def calc_new_state(prev_state, delta_t=0.01):
 
     state_dt = np.array([prev_state[1], -(g/l)*np.sin(prev_state[0])])
@@ -32,11 +35,6 @@ def calculate_path(init_state, time=5, plot=True, color='#FFFFFF'):
         return state_array
     else:
         return state_array
-
-
-
-theta = np.linspace(-10, 10, 20)
-theta_dot = np.linspace(-10, 10, 20)
 
 
 plt.style.use('dark_background')
