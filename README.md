@@ -7,4 +7,5 @@ This repository contains any mathematical programs I make.
 * ### 3D Plotting
 * ### Plotting differential equations in the phase plane
   - Pendulum
+  - Van Der Pol Oscillator
   - Lorenz Attractor
