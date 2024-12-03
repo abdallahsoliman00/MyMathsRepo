@@ -27,7 +27,7 @@ calculate_path(calc_vderpol_state, [3,6], time=15)
 calculate_path(calc_vderpol_state, [-3,-6], time=15)
 
 # Plot the vector field of the VDP oscillator
-populate_vectors(calc_vderpol_state, v, v_dot, ax)
+populate_vectors(calc_vderpol_state, v, v_dot, ax, scale=40)
 
 plt.grid(True, linestyle='--', linewidth=0.5)
 plt.title("Phase Plane Trajectory for a Van Der Pol Oscillator")

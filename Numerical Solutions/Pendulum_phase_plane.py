@@ -17,7 +17,7 @@ fig, ax = plt.subplots()
 
 calculate_path(calc_pendulum_state, [20,-10], time=12, color='#FFFFB3')
 calculate_path(calc_pendulum_state, [np.pi+0.0001, 0], time=10)
-populate_vectors(calc_pendulum_state, theta, theta_dot, ax)
+populate_vectors(calc_pendulum_state, theta, theta_dot, ax, scale=40)
 
 plt.grid(True, linestyle='--', linewidth=0.5)
 plt.title("Phase Plane Trajectory of a Pendulum")

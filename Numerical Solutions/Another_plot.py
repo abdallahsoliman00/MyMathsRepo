@@ -14,7 +14,7 @@ x2 = np.linspace(-10,10,18)
 plt.style.use('dark_background')
 fig, ax = plt.subplots(figsize=(7,4))
 
-populate_vectors(calc_state, x1, x2, ax, scale=50)
+populate_vectors(calc_state, x1, x2, ax, scale=50, normalize=True)
 calculate_path(calc_state, (5,3))
 calculate_path(calc_state, (-5.5,-3), color='#FFFFB3')
 
