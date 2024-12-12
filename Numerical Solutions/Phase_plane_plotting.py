@@ -7,7 +7,7 @@ def calculate_path(state_calc, init_state, time=5, plot=True, color='#8DD3C7'):
     state_array = np.array([init_state])
 
     old_state = np.array(init_state)
-    for i in range(0, time*100):
+    for i in range(time*100):
         new_state = state_calc(old_state)
         state_array = np.append(state_array, [new_state], axis=0)
         old_state = new_state
