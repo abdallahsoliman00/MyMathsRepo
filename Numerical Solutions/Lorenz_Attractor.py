@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from random import uniform, random
 
 sigma = 10
 beta = 8/3
@@ -38,16 +39,18 @@ ax = plt.axes(projection="3d")
 # Plot and label 3D surface
 ax.set(xlabel='x', ylabel='y', zlabel='z')
 
-init_point = (-20,5,-3)
-x,y,z = init_point
-states = calculate_path(init_point, time=60)
-ax.scatter(x,y,z, marker=".", color="#8DD3C7")
-ax.plot(states[0], states[1], states[2], linewidth=0.7)
+for i in range(10):
+    init_point = (uniform(-20,20),uniform(-5,5),uniform(-3,3))
+    x,y,z = init_point
+    color = (random(), random(), random())
+    states = calculate_path(init_point, time=60)
+    ax.scatter(x,y,z, marker=".", color=color)
+    ax.plot(states[0], states[1], states[2], linewidth=0.7, color=color)
 
-init_point2 = (-20,5,-3.001)
-x2,y2,z2 = init_point2
-states2 = calculate_path(init_point2, time=60)
-ax.scatter(x2,y2,z2, marker=".", color="#0000FF")
-ax.plot(states2[0], states2[1], states2[2], linewidth=0.7, color="blue")
+# init_point2 = (-20,5,-3.001)
+# x2,y2,z2 = init_point2
+# states2 = calculate_path(init_point2, time=60)
+# ax.scatter(x2,y2,z2, marker=".", color="#0000FF")
+# ax.plot(states2[0], states2[1], states2[2], linewidth=0.7, color="blue")
 
 plt.show()
