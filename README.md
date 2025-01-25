@@ -9,3 +9,4 @@ This repository contains any mathematical programs I make.
   - Pendulum
   - Van Der Pol Oscillator
   - Lorenz Attractor
+* ### Heat equation numerical simulation
