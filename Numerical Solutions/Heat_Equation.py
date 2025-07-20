@@ -11,6 +11,7 @@ x_points = np.linspace(0, 10, 101)
 x_size = len(x_points)
 
 # Initial Conditions
+
 # T0 = [1 if n < 5 else -1 for n in x_points]
 # init_cond = []
 # for x in x_points:
@@ -21,13 +22,15 @@ x_size = len(x_points)
 #     else:
 #         init_cond.append(-x+9)
 # T0 = np.array(init_cond)
+
 T0 = [np.exp(-0.05 * x) * (2 * np.sin(0.5 * x) + 4 * np.sin(x) + np.sin(7 * x))
       for x in x_points]
+
 # T0 = -1/5*x_points + 1
 
 
-# Numerical calculation of evolution
 def calc_heat_evolution(init_cond, timesteps, source=0, sink=0):
+    """Numerical calculation of evolution"""
     time_evolution = []
 
     alpha = 0.75
