@@ -1,8 +1,8 @@
 import numpy as np
 
 
-# Finds the gradient in n-dimensions of a function at a point
 def gradient(coords, func, epsilon=0.01):
+    """Finds the gradient in n-dimensions of a function at a point"""
     dimension = len(coords)
     coords = np.array(coords)
     grad_vector = np.array([])
@@ -22,8 +22,8 @@ def gradient(coords, func, epsilon=0.01):
     return grad_vector
 
 
-# Starting at point init_coords, the function finds the closest minimum to the initial point by "descending" the curve
 def descend_slope(init_coords, func, alpha=0.01, min_norm=10**-5):
+    """Starting at point init_coords, the function finds the closest minimum to the initial point by "descending" the curve"""
     coords = np.array(init_coords)
     count = 0
     while True:
@@ -35,8 +35,8 @@ def descend_slope(init_coords, func, alpha=0.01, min_norm=10**-5):
             return np.append(coords, func(*coords))    # Returns x,y,z coordinates of minimum point
 
 
-# Finds the derivative of a 2D function given an array of discrete points
-def func_grad(func_array):
+def func_grad(func_array) -> list[list[float]]:
+    """Finds the derivative of a 2D function given an array of discrete points"""
     x_vals, y_vals = func_array
     epsilon = x_vals[1] - x_vals[0]
 
@@ -50,21 +50,66 @@ def func_grad(func_array):
     return [x_vals, grad]
 
 
-# Finds the double derivative of a 2D function given an array of discrete points
 def double_grad(func_array):
+    """Finds the double derivative of a 2D function given an array of discrete points"""
     d1 = func_grad(func_array)
     d2 = func_grad(d1)
     return d2
 
 
+def find_zeros(coords):
+    """Returns the roots or zeros of any 2D function given the x and y coordinates"""
+    x,y = coords
+    zero_crossings = np.where(np.diff(np.sign(y)))[0]
+
+    zeros = []
+    for i in zero_crossings:
+        x0 = x[i]
+        x1 = x[i+1]
+        y0 = y[i]
+        y1 = y[i+1]
+        zero = x0 - y0 * (x1 - x0) / (y1 - y0)
+        zeros.append(zero)
+
+    return zeros
+
+
+def find_stationary_points(coords):
+    """Returns the x-coordinates the stationary points of any 2D function"""
+    grad_coords = func_grad(coords)
+    zeros = find_zeros(grad_coords)
+    # TODO: return the actal stationary point, not just the x value of the stationary point
+    return zeros
+
+
+
 # Testing:
-def function(x, y):
-    return np.sin(0.1*x)*np.sin(0.1*y)  # Define the function here
+if __name__ == "__main__":
+    def function(x, y):
+        return np.sin(0.1*x)*np.sin(0.1*y)  # Define the function here
 
 
-g1 = gradient((np.pi, 3), function)
-print(g1, "\tGradient vector")
-print(g1/np.linalg.norm(g1), "\tUnit gradient vector")
+    g1 = gradient((np.pi, 3), function)
+    print(g1, "\tGradient vector")
+    print(g1/np.linalg.norm(g1), "\tUnit gradient vector")
 
-minimum = descend_slope((-2, 0), function)
-print(minimum)
+    minimum = descend_slope((-2, 0), function)
+    print(minimum)
+
+    import matplotlib.pyplot as plt
+
+    def func(x):
+        x = np.array(x)
+        return np.sin(x) + 0.5*np.cos(3*x)
+
+    x = np.linspace(0,4*np.pi, 200)
+    y = func(x)
+
+    sp = find_stationary_points([x,y])
+    print(sp)
+
+    plt.grid(True)
+    plt.plot(x,y)
+    plt.plot(*func_grad([x,y]))
+    plt.scatter(sp, func(sp))
+    plt.show()
