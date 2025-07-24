@@ -1,7 +1,7 @@
 """
 PhasePlane2D
 ------------
-This file contains a dummy class `PhasePlane2D` to aid in plotting 2D phase plane systems.
+This file contains a dummy class `PhasePlane2D` to aid in plotting 2D state space systems.
 
 Example Usage
 -------------
