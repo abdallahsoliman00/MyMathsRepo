@@ -176,6 +176,23 @@ class PhasePlane2D:
             normalize: bool = True,
             **arrow_kwargs
     ):
+        """Adds the vectors that show the vector field of the state space.
+        
+        Parameters
+        ----------
+        x1_range : Tuple[float,float,int]
+            A tuple containing three values; the first value indicates the x-coordinate of the first vector; the second indicates the x-coordinate of the last vector; the third value indicates the number of vectors in between.
+        x2_range : Tuple[float,float,int]
+            See `x1_range`. This corresponds to the y-coordinates of the vectors.
+        color : str
+            The color of the arrow representing the vector
+        scale : float
+            A number representing the size of the vector. The larger the number the smaller the arrow.
+        normalize : bool
+            An indicator as to whether all arrows displayed should be the same size to make the plot visually pleasing.
+        arrow_kwargs : Any
+            Keyword arguments that get passed into matplotlib.axes._axes.quiver() to configure other arrow attributes.
+        """
         x1 = np.linspace(*x1_range)
         x2 = np.linspace(*x2_range)
 
